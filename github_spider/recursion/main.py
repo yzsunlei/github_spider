@@ -20,7 +20,7 @@ def main():
     redis_client.delete(REDIS_VISITED_URLS)
     start_user_url = gen_user_page_url(START_USER)
 
-    gevent.signal(signal.SIGQUIT, gevent.kill)
+    gevent.signal(signal.SIGTERM, gevent.kill)
     request_api([start_user_url], async_get, parse_user)
 
 if __name__ == '__main__':

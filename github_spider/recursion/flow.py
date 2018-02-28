@@ -68,11 +68,14 @@ def parse_user(data, method):
         'blog': data.get('blog'),
         'location': data.get('location'),
         'email': data.get('email'),
+        'bio': data.get('bio'),
         'repos_count': data.get('public_repos', 0),
         'gists_count': data.get('public+gists', 0),
         'followers': data.get('followers', 0),
         'following': data.get('following', 0),
-        'created_at': data.get('created_at')
+        'html_url': data.get('html_url'),
+        'created_at': data.get('created_at'),
+        'updated_at': data.get('updated_at'),
     }
     mongo_save_entity.delay(user)
     follower_urls = gen_url_list(user_id, gen_user_follwer_url,
@@ -111,12 +114,16 @@ def parse_repos(data, method, user=None):
 
         repo = {
             'id': element.get('id'),
-            'name': element.get('full_name'),
+            'name': element.get('name'),
+            'full_name': element.get('full_name'),
             'description': element.get('description'),
             'size': element.get('size'),
             'language': element.get('language'),
+            'stargazers_count': element.get('stargazers_count'),
             'watchers_count': element.get('watchers_count'),
             'fork_count': element.get('fork_count'),
+            'created_at': element.get('created_at'),
+            'updated_at': element.get('updated_at')
         }
         repo_list.append(repo['name'])
         mongo_save_entity.delay(repo, False)

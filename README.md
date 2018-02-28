@@ -12,7 +12,7 @@
 代码在目录recursion下。数据存储使用mongo，重复请求判断使用的redis，写mongo数据采用celery的异步调用，需要rabbitmq服务正常启动，在settings.py正确配置后，使用下面的步骤启动：
 
 1. 进入github_spider目录
-2. 执行命令```celery -A github_spider.worker worker loglevel=info```启动异步任务
+2. 执行命令```celery -A github_spider.worker worker --loglevel=info```启动异步任务
 3. 执行命令```python github_spider/recursion/main.py```启动爬虫
 
 ## 运行结果
@@ -53,7 +53,7 @@
 详细的启动步骤如下：
 
 1. 进入github_spider目录
-2. 执行命令```celery -A github_spider.worker worker loglevel=info```启动异步任务
+2. 执行命令```celery -A github_spider.worker worker --loglevel=info```启动异步任务
 3. 执行命令```python github_spider/proxy/extract.py```更新代理
 4. 执行命令```python github_spider/queue/main.py```启动脚本
 

@@ -4,7 +4,7 @@
 """
 
 # 爬取的第一个用户
-START_USER = 'LiuRoy'
+START_USER = 'yzsunlei'
 
 # 请求超时时间
 TIMEOUT = 10
